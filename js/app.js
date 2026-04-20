@@ -1,9 +1,12 @@
-function generateFormattedParagraph(itemName, buyPrice, sellPrice, isNew) {
-    const priceRatio = (sellPrice - buyPrice) / buyPrice * 100;
-    const status = isNew ? "new" : "used";
-    
-    return `The item "${itemName}" is currently available for purchase. It is a ${status} item. The buy price is $${buyPrice.toFixed(2)} and the sell price is $${sellPrice.toFixed(2)}. This represents a price change of ${priceRatio.toFixed(2)}%.`;
-}
+function generateFormattedParagraph(itemName, sellPrice, origPrice, avalibility) {
+    const priceRatio = sellPrice / origPrice;
+    const status = avalibility === "yes" ? "new" : "used";
+
+    return '【商品名稱】 ' + itemName + '\n' +
+           '【日幣原價】 ' + origPrice + ' JPY\n' +
+           '【換算匯率】 ' + (priceRatio).toFixed(2) + '\n' +
+           '【官方管道是否可取得】 ' + avalibility + '\n' +
+        
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('item-form');
@@ -13,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         
         const itemName = document.getElementById('item-name').value;
-        const buyPrice = parseFloat(document.getElementById('buy-price').value);
         const sellPrice = parseFloat(document.getElementById('sell-price').value);
-        const isNew = document.getElementById('is-new').checked;
+        const origPrice = parseFloat(document.getElementById('orig-price').value);
+        const avalibility = document.getElementById('avalibility').value;
 
-        const formattedParagraph = generateFormattedParagraph(itemName, buyPrice, sellPrice, isNew);
+        const formattedParagraph = generateFormattedParagraph(itemName, sellPrice, origPrice, avalibility);
         output.textContent = formattedParagraph;
     });
 });
