@@ -1,10 +1,10 @@
-function generateFormattedParagraph(itemName, sellPrice, origPrice, avalibility) {
+function generateFormattedParagraph(itemName, sellPrice, origPrice, availability) {
     const priceRatio = sellPrice / origPrice;
 
-    return '【商品名稱】 ' + itemName + '\n' +
-           '【日幣原價】 ' + origPrice + ' JPY\n' +
-           '【換算匯率】 ' + (priceRatio).toFixed(2) + '\n' +
-           '【官方管道是否可取得】 ' + avalibility + '\n';
+    return '【商品名稱】 ' + itemName + '<br>' +
+           '【日幣原價】 ' + origPrice + ' JPY<br>' +
+           '【換算匯率】 ' + (priceRatio).toFixed(2) + '<br>' +
+           '【官方管道是否可取得】 ' + availability + '<br>';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemName = document.getElementById('item-name').value;
         const sellPrice = parseFloat(document.getElementById('sell-price').value);
         const origPrice = parseFloat(document.getElementById('orig-price').value);
-        const avalibility = document.getElementById('avalibility').value;
+        const availability = document.getElementById('availability').value;
 
-        const formattedParagraph = generateFormattedParagraph(itemName, sellPrice, origPrice, avalibility);
+        const formattedParagraph = generateFormattedParagraph(itemName, sellPrice, origPrice, availability);
         output.textContent = formattedParagraph;
     });
 });
