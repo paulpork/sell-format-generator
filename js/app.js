@@ -33,6 +33,7 @@ function generateFormattedParagraph(itemName, sellPrice, origPrice, availability
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('item-form');
     const output = document.getElementById('output');
+    const copyBtn = document.getElementById('copy-btn');
 
     if (!form) {
         console.error('Missing element: #item-form');
@@ -45,6 +46,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ensure newlines are visible
     output.style.whiteSpace = 'pre-wrap';
+
+    // Initialize copy button state and handler (if present)
+    if (copyBtn) {
+        copyBtn.disabled = true;
+        copyBtn.addEventListener('click', async () => {
+            const textToCopy = output.textContent || '';
+            if (!textToCopy) return;
+            const originalText = copyBtn.textContent;
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(textToCopy);
+                } else {
+                    // fallback
+                    const ta = document.createElement('textarea');
+                    ta.value = textToCopy;
+                    // Prevent scrolling to bottom
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    ta.remove();
+                }
+                copyBtn.textContent = '已複製';
+                copyBtn.disabled = true;
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    // keep it enabled only if there is output
+                    copyBtn.disabled = !(output.textContent && output.textContent.trim());
+                }, 1400);
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+        });
+    }
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -68,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = generateFormattedParagraph(itemName, sellPrice, origPrice, availability);
         if (!result.ok) {
             output.textContent = result.error;
+            if (copyBtn) copyBtn.disabled = true;
             return;
         }
 
@@ -77,5 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Generated text (JSON escaped):', JSON.stringify(result.text));
 
         output.textContent = result.text;
+        if (copyBtn) copyBtn.disabled = !(output.textContent && output.textContent.trim());
     });
 });
