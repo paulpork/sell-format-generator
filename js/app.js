@@ -6,7 +6,7 @@ function generateFormattedParagraph(itemName, sellPrice, origPrice, avalibility)
            '【日幣原價】 ' + origPrice + ' JPY\n' +
            '【換算匯率】 ' + (priceRatio).toFixed(2) + '\n' +
            '【官方管道是否可取得】 ' + avalibility + '\n' +
-        
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('item-form');
