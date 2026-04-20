@@ -20,11 +20,11 @@ function generateFormattedParagraph(itemName, sellPrice, origPrice, availability
     const ratioText = priceRatio.toFixed(3);
     const status = avail.toLowerCase() === 'yes' ? 'new' : 'used';
 
-    const text = '【商品名稱】 ' + name + '<br>' +
-                 '【日幣原價】 ' + orig + ' JPY<br>' +
-               //'【賣價】 ' + sell + '<br>' +
-                 '【換算匯率】 ' + ratioText + '<br>' +
-                 '【官方管道是否可取得】 ' + avail + '<br>';
+        const text =    '【商品名稱】 ' + name + '\n' +
+                        '【日幣原價】 ' + orig + ' JPY\n' +
+                      //'【賣價】 ' + sell + '\n' +
+                        '【換算匯率】 ' + ratioText + '\n' +
+                        '【官方管道是否可取得】 ' + avail + '\n';
     return { ok: true, text };
 }
 
