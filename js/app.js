@@ -16,8 +16,8 @@ function generateFormattedParagraph(itemName, sellPrice, origPrice, availability
         return { ok: false, error: '日幣原價必須大於 0' };
     }
 
-    const priceRatio = sell / orig;
-    const ratioText = Number.isFinite(priceRatio) ? priceRatio.toFixed(2) : '—';
+    const priceRatio = Number(sell / orig);
+    const ratioText = priceRatio.toFixed(3);
     const status = avail.toLowerCase() === 'yes' ? 'new' : 'used';
 
     const text = '【商品名稱】 ' + name + '<br>' +
