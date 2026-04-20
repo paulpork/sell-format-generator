@@ -69,6 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Diagnostic logs: show the exact generated string so we can confirm
+        // whether it contains literal "<br>" or newline characters.
+        console.log('Generated result object:', result);
+        console.log('Generated text (JSON escaped):', JSON.stringify(result.text));
+
         output.textContent = result.text;
     });
 });
