@@ -1,0 +1,32 @@
+[
+    {
+        "itemName": "Sample Item 1",
+        "buyPrice": 100,
+        "sellPrice": 150,
+        "isNew": true
+    },
+    {
+        "itemName": "Sample Item 2",
+        "buyPrice": 200,
+        "sellPrice": 180,
+        "isNew": false
+    },
+    {
+        "itemName": "Sample Item 3",
+        "buyPrice": 50,
+        "sellPrice": 75,
+        "isNew": true
+    },
+    {
+        "itemName": "Sample Item 4",
+        "buyPrice": 300,
+        "sellPrice": 250,
+        "isNew": false
+    },
+    {
+        "itemName": "Sample Item 5",
+        "buyPrice": 120,
+        "sellPrice": 130,
+        "isNew": true
+    }
+]
