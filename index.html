@@ -8,24 +8,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>格式生產器v0.71</h1>
+        <h1>格式生產器v0.72</h1>
         <form id="item-form">
-            <label for="商品名稱">Item Name:</label>
+            <label for="商品名稱">商品名稱:</label>
             <input type="text" id="item-name" required>
 
-            <label for="售價">Sell Price:</label>
+            <label for="售價">售價:</label>
             <input type="number" id="sell-price" required>
 
-            <label for="日幣原價">Original Price:</label>
+            <label for="日幣原價">日幣原價:</label>
             <input type="number" id="orig-price" required>
 
-            <label for="官方管道是否可取得">availability:</label>
+            <label for="availability">官方管道是否可取得：</label>
             <!--
             <input type="text" id="availability" required>
             -->
-            <select id="avail-option" required>
-                <option value="'否'">否</option>
-                <option value="'是 (場地販售/快閃店)'">是 (場地販售/快閃店)</option>
+            <select id="availability" required>
+                <option value="avail-value-1">否</option>
+                <option value="avail-value-2">是 (場地販售/快閃店)</option>
             </select>
             <button type="submit">生成格式文字</button>
         </form>

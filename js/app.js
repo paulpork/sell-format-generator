@@ -18,13 +18,15 @@ function generateFormattedParagraph(itemName, sellPrice, origPrice, availability
 
     const priceRatio = Number(sell / orig);
     const ratioText = priceRatio.toFixed(3);
-    const status = avail.toLowerCase() === 'yes' ? 'new' : 'used';
+    const availText = avail.toLowerCase() === 'avail-value-1' ? '否' :
+                      avail.toLowerCase() === 'avail-value-2' ? '是 (場地販售/快閃店)' :
+                      '未知';
 
     const text =    '【商品名稱】 ' + name + '\n' +
                     '【日幣原價】 ' + orig + ' JPY\n' +
                     //'【賣價】 ' + sell + '\n' +
                     '【換算匯率】 ' + ratioText + '\n' +
-                    '【官方管道是否可取得】 ' + avail + '\n';
+                    '【官方管道是否可取得】 ' + availText + '\n';
     return { ok: true, text };
 }
 
