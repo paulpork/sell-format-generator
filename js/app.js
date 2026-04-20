@@ -31,9 +31,23 @@ function generateFormattedParagraph(itemName, sellPrice, origPrice, availability
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('app.js: DOMContentLoaded');
+    // global error catcher to surface runtime errors during this script
+    window.addEventListener('error', (ev) => {
+        console.error('Unhandled error detected:', ev.error || ev.message, ev);
+    });
     const form = document.getElementById('item-form');
     const output = document.getElementById('output');
     const copyBtn = document.getElementById('copy-btn');
+
+    console.log('app.js: form?', !!form, 'output?', !!output, 'copyBtn?', !!copyBtn);
+
+    // document-level fallback to catch clicks in case the direct listener wasn't attached
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'copy-btn') {
+            console.log('document click handler: copy-btn clicked', e);
+        }
+    });
 
     if (!form) {
         console.error('Missing element: #item-form');
