@@ -1,6 +1,5 @@
 function generateFormattedParagraph(itemName, sellPrice, origPrice, avalibility) {
     const priceRatio = sellPrice / origPrice;
-    const status = avalibility === "yes" ? "new" : "used";
 
     return '【商品名稱】 ' + itemName + '\n' +
            '【日幣原價】 ' + origPrice + ' JPY\n' +
