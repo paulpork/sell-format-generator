@@ -49,8 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize copy button state and handler (if present)
     if (copyBtn) {
-        copyBtn.disabled = false;
+        // Start disabled until there's output to copy
+        copyBtn.disabled = true;
         copyBtn.addEventListener('click', async () => {
+            console.log('Copy button clicked');
+            console.log('navigator.clipboard available:', !!(navigator.clipboard && navigator.clipboard.writeText));
             const textToCopy = output.textContent || '';
             if (!textToCopy) return;
             const originalText = copyBtn.textContent;
@@ -78,6 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 1400);
             } catch (err) {
                 console.error('Copy failed', err);
+                // brief visual feedback on failure
+                const prev = copyBtn.textContent;
+                copyBtn.textContent = '複製失敗';
+                setTimeout(() => copyBtn.textContent = prev, 1400);
             }
         });
     }
