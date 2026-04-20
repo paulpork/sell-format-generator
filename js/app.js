@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize copy button state and handler (if present)
     if (copyBtn) {
-        copyBtn.disabled = true;
+        copyBtn.disabled = false;
         copyBtn.addEventListener('click', async () => {
             const textToCopy = output.textContent || '';
             if (!textToCopy) return;
