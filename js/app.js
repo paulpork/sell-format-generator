@@ -1,10 +1,10 @@
 function generateFormattedParagraph(itemName, sellPrice, origPrice, availability) {
     const priceRatio = sellPrice / origPrice;
 
-    return '【商品名稱】 ' + itemName + '<br>' +
-           '【日幣原價】 ' + origPrice + ' JPY<br>' +
-           '【換算匯率】 ' + (priceRatio).toFixed(2) + '<br>' +
-           '【官方管道是否可取得】 ' + availability + '<br>';
+    return '【商品名稱】 ' + itemName + '\n' +
+           '【日幣原價】 ' + origPrice + ' JPY\n' +
+           '【換算匯率】 ' + (priceRatio).toFixed(2) + '\n' +
+           '【官方管道是否可取得】 ' + availability + '\n';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
